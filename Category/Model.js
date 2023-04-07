@@ -7,7 +7,17 @@ class CategoryModel {
         return new Promise((resolve, reject) => {
             con.query(query, (err,data) => {
                 if(err) return reject(err)
-                resolve(data)
+                return resolve(data)
+            })
+        })
+    }
+
+    insertCategory(data){
+        let query = `INSERT INTO tbl_category (title,alias) VALUES ("${data.name}" , "${data.alias}")`
+        return new Promise((resolve,reject) => {
+            con.query(query, (err,data) => {
+                if(err) return reject(err)
+                return resolve(data)
             })
         })
     }
